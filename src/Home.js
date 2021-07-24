@@ -455,7 +455,7 @@ const Home = () => {
 
 
 
-  <!-- info section -->
+
   <section class="info_section layout_padding">
     <div class="container">
       <div class="row">
