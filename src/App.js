@@ -5,6 +5,7 @@ import Home from "./Home";
 import Login from "./Login";
 import signup from "./signup";
 import admin from "./admin";
+import about from "./about";
 import { AuthProvider } from "./Auth";
 import PrivateRoute from "./PrivateRoute";
 
@@ -20,6 +21,7 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={signup} />
           <Route exact path="/admin" component={admin} />
+          <Route exact path="/about" component={about}/>
         </div>
       </Router>
     </AuthProvider>

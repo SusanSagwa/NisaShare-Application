@@ -1,7 +1,7 @@
 body {
   font-family: "Poppins", sans-serif;
   color: #000000;
-  background-color: #ffffff;
+  background-color: #000000;
 }
 
 .layout_padding {
@@ -27,7 +27,6 @@ body {
 .layout_padding-bottom {
   padding-bottom: 90px;
 }
-
 .heading_container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -62,8 +61,7 @@ body {
 /*header section*/
 .hero_area {
   height: 100vh;
-  background-color: #b5caee;
-  background-image: url(../images/hero-bg.jpg);
+  background-color: #008b8b;
   background-size: cover;
 }
 
@@ -254,6 +252,10 @@ a:focus {
   border-color: #133e3f;
 }
 
+.special_section{
+  background-color: #000000;
+}
+
 .special_section .special_container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -300,6 +302,8 @@ a:focus {
 
 .about_section {
   position: relative;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 .about_section .side_img {
@@ -351,6 +355,11 @@ a:focus {
 
 .course_section {
   position: relative;
+  background-color: #000000;
+}
+
+.course_section h3 {
+  color: #ffffff;
 }
 
 .course_section .side_img {
@@ -461,7 +470,6 @@ a:focus {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
 .course_section .btn-box a {
   display: inline-block;
   padding: 8px 45px;
@@ -477,8 +485,9 @@ a:focus {
 }
 
 .login_section {
-  background-image: url(../images/login-bg.jpg);
+  /*background-image: url(../images/login-bg.jpg);*/
   background-size: cover;
+  background-color: #008b8b;
   color: #ffffff;
 }
 
@@ -510,7 +519,7 @@ a:focus {
 
 .login_section .login_form {
   padding: 30px 15px;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(0,0,0);
   text-align: center;
   border-radius: 15px;
 }
@@ -642,7 +651,13 @@ a:focus {
   color: #133e3f;
 }
 
+.client_section {
+  color: #ffffff;
+  background-color: #000000;
+}
+
 .client_section .heading_container {
+  margin-top: 50px;
   margin-bottom: 45px;
 }
 
@@ -736,6 +751,10 @@ a:focus {
   margin-bottom: 25px;
 }
 
+.contact_section h3, p {
+  color: #ffffff;
+}
+
 .contact_section .heading_container h3::before {
   left: -1px;
 }
@@ -747,7 +766,8 @@ a:focus {
   top: -1px;
   height: 100.5%;
   width: 40%;
-  background-color: #ffffff;
+  background-color: #000000;
+  color: #ffffff;
   -webkit-clip-path: polygon(0 0, 95% 0, 65% 100%, 0% 100%);
           clip-path: polygon(0 0, 95% 0, 65% 100%, 0% 100%);
 }
@@ -780,7 +800,8 @@ a:focus {
 .contact_section .contact-form input {
   border: none;
   outline: none;
-  background-color: #ffffff;
+  color:  #ffffff;
+  background-color: #000000;
   width: 100%;
   margin: 15px 0;
   padding: 10px 20px;
@@ -793,19 +814,19 @@ a:focus {
 }
 
 .contact_section .contact-form input::-webkit-input-placeholder {
-  color: #151515;
+  color: #808080;
 }
 
 .contact_section .contact-form input:-ms-input-placeholder {
-  color: #151515;
+  color: #808080;
 }
 
 .contact_section .contact-form input::-ms-input-placeholder {
-  color: #151515;
+  color: #808080;
 }
 
 .contact_section .contact-form input::placeholder {
-  color: #151515;
+  color: #808080;
 }
 
 .contact_section .contact-form button {
