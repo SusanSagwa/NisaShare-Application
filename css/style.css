@@ -47,7 +47,28 @@ body {
   margin-bottom: 15px;
 }
 
+
 .heading_container h3::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: 1px;
+  height: 65px;
+  background-color: #4bc5b8;
+  -webkit-transform: translateY(-50%) rotate(20deg);
+          transform: translateY(-50%) rotate(20deg);
+}
+
+.heading_container h4 {
+  font-weight: bold;
+  position: relative;
+  margin-bottom: 15px;
+  margin-left: 75px;
+  margin-top: 40px;
+}
+
+.heading_container h4::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -155,6 +176,13 @@ a:focus {
 }
 
 .navbar-brand h3 {
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.navbar-brand h4 {
   color: #ffffff;
   font-weight: bold;
   text-transform: uppercase;
