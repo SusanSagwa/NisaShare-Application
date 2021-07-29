@@ -80,6 +80,23 @@ body {
       transform: translateY(-50%) rotate(20deg);
     }
   }
+
+  h4 {
+    font-weight: bold;
+    position: relative;
+    margin-bottom: 15px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 2px;
+      width: 1px;
+      height: 65px;
+      background-color: #4bc5b8;
+      transform: translateY(-50%) rotate(20deg);
+    }
+  }
 }
 
 /*header section*/
