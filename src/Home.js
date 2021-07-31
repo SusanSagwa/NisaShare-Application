@@ -1,9 +1,13 @@
 import React from "react";
+import { useAuth } from "./Auth.js";
 import app from "./firebase";
 import { Link } from 'react-router-dom';
+import "./custom.scss"
+
 
 
 const Home = () => {
+  const { currentUser } = useAuth()
   return (
     <body>
   <div class="hero_area">
@@ -33,7 +37,7 @@ const Home = () => {
                 <a class="nav-link" href="contact.html">Contact Us</a>
               </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/login">Login</Link>
+                <Link class="nav-link" to="/userpage">{currentUser.email}</Link>
               </li>
               <li class="nav-item">
                 <button class="nav-link" onClick={() => app.auth().signOut()}>Sign out</button>

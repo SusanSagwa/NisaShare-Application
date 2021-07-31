@@ -1,20 +1,39 @@
-import React, { useCallback } from "react";
-import { withRouter } from "react-router";
-import app from "./firebase";
+import React, { useRef, useState } from "react";
+import { Link, useHistory, } from 'react-router-dom';
+import {useAuth} from "./Auth";
+import { Button } from "@material-ui/core";
+import {Alert} from "react-bootstrap";
+import "./custom.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const SignUp = ({ history }) => {
-  const handleSignUp = useCallback(async event => {
-    event.preventDefault();
-    const { email, password } = event.target.elements;
-    try {
-      await app
-        .auth()
-        .createUserWithEmailAndPassword(email.value, password.value);
-      history.push("/");
-    } catch (error) {
-      alert(error);
+export default function Signup() {
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const passwordConfirmRef = useRef()
+  const { signup } = useAuth()
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const history = useHistory()
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords do not match")
     }
-  }, [history]);
+
+    try {
+      setError("")
+      setLoading(true)
+      await signup(emailRef.current.value, passwordRef.current.value)
+      history.push("/")
+    } catch {
+      setError("Failed to create an account")
+    }
+
+    setLoading(false)
+  }
+
 
   return (
     <body class="sub_page">
@@ -45,7 +64,7 @@ const SignUp = ({ history }) => {
                 <a class="nav-link" href="contact.html">Contact us</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="login.html">Login</a>
+                <Link class="nav-link" to="/login">Login</Link>
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
@@ -79,7 +98,8 @@ const SignUp = ({ history }) => {
             <h5>
               Register Now
             </h5>
-            <form onSubmit={handleSignUp}>
+            {error && <Alert variant="danger">{error}</Alert>}
+            <form onSubmit={handleSubmit}>
               <div>
                 <input type="text" placeholder="First Name " />
               </div>
@@ -87,13 +107,21 @@ const SignUp = ({ history }) => {
                 <input type="text" placeholder="Last Name " />
               </div>
               <div>
-                <input name="email" type="email" placeholder="Email " />
+                <input name="email" type="email" placeholder="Email "  ref={emailRef} required  />
               </div>
               <div>
-                <input name="password" type="password" placeholder="Password" />
+                <input name="password" type="password" placeholder="Password" ref={passwordRef} required />
               </div>
-              <button type="submit">Submit</button>
+              <div>
+                <input name="password" type="password" placeholder="Confirm Password" ref={passwordConfirmRef} required  />
+              </div>
+              <Button disabled={loading}  type="submit">
+              Sign Up
+            </Button>
             </form>
+            <div className="w-100 text-center mt-2">
+        Already have an account? <Link to="/login">Log In</Link>
+      </div>
           </div>
         </div>
       </div>
@@ -177,4 +205,3 @@ const SignUp = ({ history }) => {
   );
 };
 
-export default withRouter(SignUp);

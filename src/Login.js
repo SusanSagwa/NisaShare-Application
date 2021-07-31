@@ -1,33 +1,34 @@
-import React, { useCallback, useContext } from "react";
-import { withRouter, Redirect } from "react-router";
-import app from "./firebase.js";
-import { AuthContext } from "./Auth.js";
-import { Link } from 'react-router-dom';
-import "./css/style.css";
+import React, { useRef, useState } from "react";
+import { useAuth } from "./Auth.js";
+import { Link, useHistory } from 'react-router-dom';
+import "./custom.scss";
+import { Button } from "@material-ui/core";
+import {Alert} from "react-bootstrap";
 
+export default function Login() {
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const { login } = useAuth()
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const history = useHistory()
 
-const Login = ({ history }) => {
-  const handleLogin = useCallback(
-    async event => {
-      event.preventDefault();
-      const { email, password } = event.target.elements;
-      try {
-        await app
-          .auth()
-          .signInWithEmailAndPassword(email.value, password.value);
-        history.push("/");
-      } catch (error) {
-        alert(error);
-      }
-    },
-    [history]
-  );
+  async function handleSubmit(e) {
+    e.preventDefault()
 
-  const { currentUser } = useContext(AuthContext);
+    try {
+      setError("")
+      setLoading(true)
+      await login(emailRef.current.value, passwordRef.current.value)
+      history.push("/")
+    } catch {
+      setError("Failed to log in. The Password or Email is Incorrect")
+    }
 
-  if (currentUser) {
-    return <Redirect to="/" />;
+    setLoading(false)
   }
+
+
 
   return (
     <body class="sub_page">
@@ -95,15 +96,21 @@ const Login = ({ history }) => {
             <h5>
               Login Now
             </h5>
-             <form onSubmit={handleLogin}>
+             <form onSubmit={handleSubmit}>
+             {error && <Alert variant="danger">{error}</Alert>}
               <div>
-                <input name="email" type="email" placeholder="Email " />
+                <input name="email" type="email" placeholder="Email " ref={emailRef} required/>
               </div>
               <div>
-                <input name="password" type="password" placeholder="Password" />
+                <input name="password" type="password" placeholder="Password" ref={passwordRef} required />
               </div>
-              <button type="submit">Login</button>
+              <Button disabled={loading} className="w-100" type="submit">
+              Log In
+            </Button>
             </form>
+            <div className="w-100 text-center mt-3">
+            <Link to="/forgot-password">Forgot Password?</Link>
+          </div>
           </div>
         </div>
       </div>
@@ -189,4 +196,3 @@ const Login = ({ history }) => {
 );
 };
 
-export default withRouter(Login);
