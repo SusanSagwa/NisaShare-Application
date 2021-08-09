@@ -18,7 +18,7 @@
         margin-right: -15px;
     }
 
-    .custom_nav-container .navbar-nav .nav-item .nav-link {
+    .custom_nav-container .navbar-nav .nav-item .nav-link .dropdown {
         padding: 15px;
         margin: 5px 0;
     }
