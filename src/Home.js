@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <body>
   <div class="hero_area">
-
+    <!-- header section strats -->
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -29,6 +29,9 @@ const Home = () => {
                 <a class="nav-link" href="about.html"> About </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="books.html"> Books </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact Us</a>
               </li>
               <li class="nav-item">
@@ -42,8 +45,7 @@ const Home = () => {
         </nav>
       </div>
     </header>
-
-
+  
     <section class=" slider_section position-relative">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -61,8 +63,9 @@ const Home = () => {
                       <h1>
                         N I S A S H A R E
                       </h1>
-                      <a href="about.html">
-                        Read More
+                      <p>Login to start reading now!</p>
+                      <a href="login.html">
+                        Login
                       </a>
                     </div>
                   </div>
@@ -79,8 +82,9 @@ const Home = () => {
                       <h1>
                         N I S A S H A R E
                       </h1>
-                      <a href="about.html">
-                        Read More
+                      <p>Login to start reading now!</p>
+                      <a href="login.html">
+                        Login
                       </a>
                     </div>
                   </div>
@@ -97,8 +101,9 @@ const Home = () => {
                       <h1>
                         N I S A S H A R E
                       </h1>
-                      <a href="about.html">
-                        Read More
+                      <p>Login to start reading now!</p>
+                      <a href="login.html">
+                        Login
                       </a>
                     </div>
                   </div>
@@ -109,6 +114,7 @@ const Home = () => {
         </div>
       </div>
     </section>
+ 
   </div>
 
 
@@ -118,14 +124,14 @@ const Home = () => {
       <div class="special_container">
         <div class="box b1">
           <div class="img-box">
-            <img src="images/award.png" alt=""/>
+            <img src="images/award.png" alt="" />
           </div>
           <div class="detail-box">
             <h4>
               BEST <br />
               BOOK APPLICATION
             </h4>
-            <a href="">
+            <a href="about.html">
               Read More
             </a>
           </div>
@@ -139,7 +145,7 @@ const Home = () => {
               READ <br />
               BOOKS ONLINE
             </h4>
-            <a href="">
+            <a href="about.html">
               Read More
             </a>
           </div>
@@ -153,7 +159,7 @@ const Home = () => {
               BEST <br />
               LIBRARY & STORE
             </h4>
-            <a href="">
+            <a href="about.html">
               Read More
             </a>
           </div>
@@ -162,9 +168,9 @@ const Home = () => {
     </div>
   </section>
 
+  
 
-
-
+  
   <section class="about_section layout_padding">
     <div class="side_img">
       <img src="images/side-img.png" alt="" />
@@ -200,9 +206,9 @@ const Home = () => {
     </div>
   </section>
 
+  
 
-
-
+  
 
   <section class="course_section layout_padding-bottom">
     <div class="side_img">
@@ -272,15 +278,16 @@ const Home = () => {
         </div>
       </div>
       <div class="btn-box">
-        <a href="">
+        <a href="books.html">
           Read More
         </a>
       </div>
     </div>
   </section>
 
+  
 
-
+  
 
   <section class="login_section layout_padding">
     <div class="container">
@@ -306,7 +313,7 @@ const Home = () => {
             </h5>
             <form action="">
               <div>
-                <input type="email" placeholder="Email " />
+                <input type="email" placeholder="Email" />
               </div>
               <div>
                 <input type="password" placeholder="Password" />
@@ -319,10 +326,10 @@ const Home = () => {
     </div>
   </section>
 
- 
+  
 
 
-
+  
 
   <section class="client_section layout_padding-bottom">
     <div class="container">
@@ -403,9 +410,9 @@ const Home = () => {
     </div>
   </section>
 
+  
 
-
-
+  
 
   <section class="contact_section ">
     <div class="container">
@@ -417,8 +424,7 @@ const Home = () => {
                 Contact Us
               </h3>
               <p>
-                It is a long established fact that a reader will be distracted
-                by the readable
+                Send us your feedback today so that we can make your experience with us better!
               </p>
             </div>
           </div>
@@ -453,9 +459,9 @@ const Home = () => {
     </div>
   </section>
 
+  
 
-
-
+  
   <section class="info_section layout_padding">
     <div class="container">
       <div class="row">
@@ -472,6 +478,9 @@ const Home = () => {
                 <a class="nav-link" href="about.html"> About </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="books.html"> Books </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact Us</a>
               </li>
               <li class="nav-item">
@@ -482,7 +491,6 @@ const Home = () => {
         </div>
         <div class="col-md-3">
           <div class="info_course">
-
           </div>
         </div>
 
@@ -515,16 +523,16 @@ const Home = () => {
     </div>
   </section>
 
+  
 
-
- 
+  
   <footer class="container-fluid footer_section">
     <p>
       &copy; 2021 All Rights Reserved By NisaShare
     </p>
   
   </footer>
-
+ 
 
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
