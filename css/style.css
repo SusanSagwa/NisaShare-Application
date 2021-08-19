@@ -59,7 +59,6 @@ body {
   -webkit-transform: translateY(-50%) rotate(20deg);
           transform: translateY(-50%) rotate(20deg);
 }
-
 .heading_container h4 {
   font-weight: bold;
   position: relative;
