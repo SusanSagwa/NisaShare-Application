@@ -1,11 +1,15 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "./Auth.js";
 import { Link, useHistory } from 'react-router-dom';
-import "./custom.scss";
+import "./css/style.scss";
 import { Button } from "@material-ui/core";
 import {Alert} from "react-bootstrap";
 
+
+
+
 export default function Login() {
+ 
   const emailRef = useRef()
   const passwordRef = useRef()
   const { login } = useAuth()
@@ -27,7 +31,7 @@ export default function Login() {
 
     setLoading(false)
   }
-
+ 
 
 
   return (
@@ -58,9 +62,7 @@ export default function Login() {
               <li class="nav-item">
                 <Link class="nav-link" to="contact.html">Contact us</Link>
               </li>
-              <li class="nav-item active">
-                <Link class="nav-link" to="/login">Login</Link>
-              </li>
+            
             </ul>
             <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
               <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
@@ -91,7 +93,7 @@ export default function Login() {
             </Link>
           </div>
         </div>
-        <div class="col-md-6">
+      <div class="col-md-6">
           <div class="login_form">
             <h5>
               Login Now

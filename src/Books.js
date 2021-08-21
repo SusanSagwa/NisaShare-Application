@@ -1,11 +1,35 @@
-import React from 'react'
-import "./custom.scss"
+import React, { useState, useEffect }  from 'react'
+import firebase from 'firebase/app';
+import "./UploadBooks"
 import "./css/style.scss"
+import c from "./images/side-img.png"
+import d from "./images/c-1.jpg"
+import f from "./images/c-2.jpg"
+import g from "./images/link.png"
+import h from "./images/c-3.jpg"
+import i from "./images/c-4.jpg"
+import j from "./images/c-5.jpg"
 
-export default function about() {
+export default function Books() {
+  const [books, setBooks] = useState([]);
+  useEffect(() =>{
+    const db = firebase.firestore();
+    (async() => {
+   const snapshot = await db.collection('books').get();
+   const booksArray = [];
+   snapshot.forEach(doc => {
+   booksArray.push({
+   id: doc.id,
+   ...doc.data(),
+     });
+   });
+   setBooks(booksArray);
+    }) ();
+  }, []);
+  
   return (
     <div>
-     <body class="sub_page">
+      <body class="sub_page">
   <div class="hero_area">
     
     <header class="header_section">
@@ -24,19 +48,13 @@ export default function about() {
           <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
             <ul class="navbar-nav  ml-auto">
               <li class="nav-item ">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="about.html"> About </a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/books"> Books </a>
+                <a class="nav-link" href="/about"> About </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
@@ -46,47 +64,101 @@ export default function about() {
         </nav>
       </div>
     </header>
-   
+    
   </div>
 
   
-  <section class="about_section layout_padding">
+
+  <section class="course_section layout_padding">
     <div class="side_img">
-      <img src="./images/side-img.png" alt="" />
+      <img src={c} alt="" />
     </div>
     <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="img_container">
-            <div class="img-box b1">
-              <img src="images/a-1b.png" alt="" />
-            </div>
-            <div class="img-box b2">
-              <img src="images/a-2b.png" alt="" />
-            </div>
+      <div class="heading_container">
+        <h3>
+          POPULAR GENRES
+        </h3>
+        <p>
+          What Everyone Is Reading
+        </p>
+        <p>
+          Login To Start Reading Your Favourite Books!
+        </p>
+      </div>
+      <div class="course_container">
+        <div class="course_content">
+          <div class="box">
+            <img src={d} alt="" />
+            <a href="/Books" class="">
+              <img src={g} alt="" />
+            </a>
+            <h5>
+              Action <br />
+              & Adventure
+            </h5>
+          </div>
+          <div class="box">
+            <img src={f} alt="" />
+            <a href="/Books" class="">
+              <img src={g} alt="" />
+            </a>
+            <h5>
+              Detective <br />
+              & Mystery
+            </h5>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="detail-box">
-            <div class="heading_container">
-              <h3>
-                About NisaShare
-              </h3>
-              <p>
-                NisaShare is a web-based book sharing application that is dedicated to providing books to all Kenyans at affordable prices easily. With NisaShare you can get access to novels, school textbooks, and more all at a tap of a button! You can also interact with your fellow scholars once you log in to the application. 
-                NisaShare qualifies to be the best book sharing application in the country because of its ease
-                and efficiency to use. Many users have used our application over the years to access all types of books.
-                You can read books online or you can read offline when you subscribe to the premium plan. Get free access to pdfs, school revision materials, and past exam papers uploaded by other 
-                Find your favourite novels from our huge collection of books in our library! You can recommend them to other readers too!
-              </p>
-            </div>
+        <div class="course_content">
+          <div class="box">
+            <img src={h} alt="" />
+            <a href="/Books" class="">
+              <img src={g} alt="" />
+            </a>
+            <h5>
+              Historical <br />
+              Fiction
+            </h5>
+          </div>
+          <div class="box">
+            <img src={i} alt="" />
+            <a href="/Books" class="">
+              <img src={g} alt="" />
+            </a>
+            <h5>
+              Fantasy
+            </h5>
+          </div>
+          <div class="box">
+            <img src={j} alt="" />
+            <a href="/Books" class="">
+              <img src={g} alt="" />
+            </a>
+            <h5>
+              Classics
+            </h5>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  
+  <section  class="course_section layout_padding">
+  <div className="book-list">
+  <div class="heading_container"> <h3>Book List</h3></div>
+  <div class="course_container">
+        <div class="course_content">
+    
+    {books.map(book =>
+      <div class="box">
+        <h4>{book.title}</h4>
+        <span><strong>Pages: </strong> {book.pages}</span>{""}
+      </div>)}
+      </div>
+       </div>
+  </div>
+</section>
+
+ 
   <section class="info_section layout_padding">
     <div class="container">
       <div class="row">
@@ -97,13 +169,13 @@ export default function about() {
             </h5>
             <ul class="navbar-nav  ">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html"> About </a>
+                <a class="nav-link" href="/about"> About </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="books.html"> Books </a>
+                <a class="nav-link" href="/books"> Books </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact us</a>
@@ -137,7 +209,7 @@ export default function about() {
             </div>
             <form action="">
               <p>Get Our Daily Newsletter!</p>
-              <input type="email" placeholder="Enter Your email" />
+              <input type="text" placeholder="Enter Your email" />
               <button>
                 Subscribe
               </button>
@@ -148,23 +220,21 @@ export default function about() {
     </div>
   </section>
 
-  
+ 
   <footer class="container-fluid footer_section">
     <p>
       &copy; 2021 All Rights Reserved By NisaShare
     </p>
   </footer>
   <footer class="container-fluid footer_section">
-
-</footer>
   
 
+</footer>
+ 
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
 
 </body>
-
     </div>
   )
-};
-
+}
