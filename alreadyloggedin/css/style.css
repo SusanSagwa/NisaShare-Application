@@ -89,7 +89,9 @@ body {
   cursor: pointer;
   position: relative;
 }
+
 .nav-item ul li img{
+  background-image: url(../images/user.png);
   width: 35px;
   border-radius: 15px;
   background-size: 20px;
@@ -110,7 +112,7 @@ body {
   border-radius: 4px;
   /*line-height: 2.43;*/
   text-align: left;
-  /*display: none;*/
+  display: none;
 }
 
 .nav-item .dd_menu .dd_left{
@@ -141,6 +143,10 @@ body {
   right: 30px;
   border:  10px solid;
   border-color: transparent transparent #fff transparent;
+}
+
+.nav-item .dd_main.active .dd_menu{
+  display: flex;
 }
 
 .header_section .nav_container {
