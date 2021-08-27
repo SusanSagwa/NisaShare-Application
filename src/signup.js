@@ -16,10 +16,12 @@ export default function Signup() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+  const {uid} = signup
   const[user, setUser] = useState({
     Fname: '',
     Sname: '',
-    emailRef: ''
+    emailRef: '',
+    user_id: uid
   });
 
   const onChange = (e) => {
@@ -47,7 +49,7 @@ export default function Signup() {
 
     setLoading(false)
     console.log(user);
-    db.collection('users').add(user);
+    db.collection('users').doc(uid).set(user);
   }
 
   

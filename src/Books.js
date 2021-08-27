@@ -89,7 +89,7 @@ export default function Books() {
         <div class="course_content">
           <div class="box">
             <img src={d} alt="" />
-            <a href="/Books" class="">
+            <a href="/Action-and-Adventure" class="">
               <img src={g} alt="" />
             </a>
             <h5>
@@ -99,7 +99,7 @@ export default function Books() {
           </div>
           <div class="box">
             <img src={f} alt="" />
-            <a href="/Books" class="">
+            <a href="/Detective-and-Mystery" class="">
               <img src={g} alt="" />
             </a>
             <h5>
@@ -111,7 +111,7 @@ export default function Books() {
         <div class="course_content">
           <div class="box">
             <img src={h} alt="" />
-            <a href="/Books" class="">
+            <a href="/Historical-Fiction" class="">
               <img src={g} alt="" />
             </a>
             <h5>
@@ -121,7 +121,7 @@ export default function Books() {
           </div>
           <div class="box">
             <img src={i} alt="" />
-            <a href="/Books" class="">
+            <a href="/fantasy" class="">
               <img src={g} alt="" />
             </a>
             <h5>
@@ -130,7 +130,7 @@ export default function Books() {
           </div>
           <div class="box">
             <img src={j} alt="" />
-            <a href="/Books" class="">
+            <a href="/classics" class="">
               <img src={g} alt="" />
             </a>
             <h5>
@@ -151,6 +151,7 @@ export default function Books() {
     {books.map(book =>
       <div class="box">
         <h4>{book.title}</h4>
+        <img src={book.photo} alt="" />
         <span><strong>Pages: </strong> {book.pages}</span>{""}
       </div>)}
       </div>
@@ -181,7 +182,7 @@ export default function Books() {
                 <a class="nav-link" href="contact.html">Contact us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
+                <a class="nav-link" href="/login">Login</a>
               </li>
             </ul>
           </div>

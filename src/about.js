@@ -1,6 +1,9 @@
 import React from 'react'
 import "./custom.scss"
 import "./css/style.scss"
+import a from "./images/a-1b.png"
+import b from "./images/a-2b.png"
+import c from "./images/side-img.png"
 
 export default function about() {
   return (
@@ -24,10 +27,7 @@ export default function about() {
           <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
             <ul class="navbar-nav  ml-auto">
               <li class="nav-item ">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="about.html"> About </a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/books"> Books </a>
@@ -36,7 +36,7 @@ export default function about() {
                 <a class="nav-link" href="contact.html">Contact us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
+                <a class="nav-link" href="/login">Login</a>
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
@@ -52,17 +52,17 @@ export default function about() {
   
   <section class="about_section layout_padding">
     <div class="side_img">
-      <img src="./images/side-img.png" alt="" />
+      <img src={c} alt="" />
     </div>
     <div class="container">
       <div class="row">
         <div class="col-md-6">
           <div class="img_container">
             <div class="img-box b1">
-              <img src="images/a-1b.png" alt="" />
+              <img src={a} alt="" />
             </div>
             <div class="img-box b2">
-              <img src="images/a-2b.png" alt="" />
+              <img src={b} alt="" />
             </div>
           </div>
         </div>
