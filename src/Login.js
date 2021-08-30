@@ -1,31 +1,34 @@
-import React, { useCallback, useContext } from "react";
-import { withRouter, Redirect } from "react-router";
-import app from "./firebase.js";
-import { AuthContext } from "./Auth.js";
-import { Link } from 'react-router-dom';
+import React, { useRef, useState } from "react";
+import { useAuth } from "./Auth.js";
+import { Link, useHistory } from 'react-router-dom';
+import "./custom.scss";
+import { Button } from "@material-ui/core";
+import {Alert} from "react-bootstrap";
 
-const Login = ({ history }) => {
-  const handleLogin = useCallback(
-    async event => {
-      event.preventDefault();
-      const { email, password } = event.target.elements;
-      try {
-        await app
-          .auth()
-          .signInWithEmailAndPassword(email.value, password.value);
-        history.push("/");
-      } catch (error) {
-        alert(error);
-      }
-    },
-    [history]
-  );
+export default function Login() {
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const { login } = useAuth()
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const history = useHistory()
 
-  const { currentUser } = useContext(AuthContext);
+  async function handleSubmit(e) {
+    e.preventDefault()
 
-  if (currentUser) {
-    return <Redirect to="/" />;
+    try {
+      setError("")
+      setLoading(true)
+      await login(emailRef.current.value, passwordRef.current.value)
+      history.push("/")
+    } catch {
+      setError("Failed to log in. The Password or Email is Incorrect")
+    }
+
+    setLoading(false)
   }
+
+
 
   return (
     <body class="sub_page">
@@ -34,12 +37,12 @@ const Login = ({ history }) => {
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <Link class="navbar-brand" to="/">
             <h3>
               NisaShare
             </h3>
             <span> application</span>
-          </a>
+          </Link>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -47,16 +50,16 @@ const Login = ({ history }) => {
           <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
             <ul class="navbar-nav  ml-auto">
               <li class="nav-item ">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <Link class="nav-link" to="/">Home <span class="sr-only">(current)</span></Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html"> About </a>
+                <Link class="nav-link" to="about.html"> About </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact us</a>
+                <Link class="nav-link" to="contact.html">Contact us</Link>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="login.html">Login</a>
+                <Link class="nav-link" to="/login">Login</Link>
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
@@ -83,9 +86,9 @@ const Login = ({ history }) => {
               Create your free account now and get immediate access to 100s of
               online books
             </p>
-            <a href="register.html">
+            <Link to="/signup">
               REGISTER NOW
-            </a>
+            </Link>
           </div>
         </div>
         <div class="col-md-6">
@@ -93,15 +96,21 @@ const Login = ({ history }) => {
             <h5>
               Login Now
             </h5>
-             <form form onSubmit={handleLogin}>
+             <form onSubmit={handleSubmit}>
+             {error && <Alert variant="danger">{error}</Alert>}
               <div>
-                <input type="email" placeholder="Email " />
+                <input name="email" type="email" placeholder="Email " ref={emailRef} required/>
               </div>
               <div>
-                <input type="password" placeholder="Password" />
+                <input name="password" type="password" placeholder="Password" ref={passwordRef} required />
               </div>
-              <button type="submit">Login</button>
+              <Button disabled={loading} className="w-100" type="submit">
+              Log In
+            </Button>
             </form>
+            <div className="w-100 text-center mt-3">
+            <Link to="/forgot-password">Forgot Password?</Link>
+          </div>
           </div>
         </div>
       </div>
@@ -147,7 +156,7 @@ const Login = ({ history }) => {
               FOR ANY QUERY, PLEASE WRITE TO US
             </h5>
             <div class="info_contact">
-              <a href="https://cutt.ly/5mNGi66" target="_blank">
+              <a href="https://cutt.ly/5mNGi66" target="_blank" rel="noreferrer">
                 View Park Towers
               </a>
               <p>
@@ -178,16 +187,11 @@ const Login = ({ history }) => {
       &copy; 2021 All Rights Reserved By NisaShare
     </p>
   </footer>
-  <!-- footer section -->
+ 
 
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
 
 </body>
-    
-
-
-  );
+);
 };
-
-export default withRouter(Login);
