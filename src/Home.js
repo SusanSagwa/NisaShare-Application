@@ -1,12 +1,17 @@
 import React from "react";
+import { useAuth } from "./Auth.js";
 import app from "./firebase";
 import { Link } from 'react-router-dom';
+import "./custom.scss"
+
+
 
 const Home = () => {
+  const { currentUser } = useAuth()
   return (
     <body>
   <div class="hero_area">
-    <!-- header section strats -->
+
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -23,20 +28,20 @@ const Home = () => {
           <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
             <ul class="navbar-nav  ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <Link class="nav-link" to="/">Home <span class="sr-only">(current)</span></Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html"> About </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="books.html"> Books </a>
+                <a class="nav-link" href="/about"> About </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
+                <Link class="nav-link" to="/userpage">{currentUser.email}</Link>
               </li>
+              <li class="nav-item">
+                <button class="nav-link" onClick={() => app.auth().signOut()}>Sign out</button>
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
               <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
@@ -45,7 +50,8 @@ const Home = () => {
         </nav>
       </div>
     </header>
-  
+
+
     <section class=" slider_section position-relative">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -63,9 +69,26 @@ const Home = () => {
                       <h1>
                         N I S A S H A R E
                       </h1>
-                      <p>Login to start reading now!</p>
-                      <a href="login.html">
-                        Login
+                      <a href="/about">
+                        Read More
+                        </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div class="detail-box">
+                    <div>
+                      <h1>
+                        N I S A S H A R E
+                      </h1>
+                      <a href="/about">
+                        Read More
                       </a>
                     </div>
                   </div>
@@ -82,28 +105,8 @@ const Home = () => {
                       <h1>
                         N I S A S H A R E
                       </h1>
-                      <p>Login to start reading now!</p>
-                      <a href="login.html">
-                        Login
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item ">
-            <div class="container">
-              <div class="row">
-                <div class="col">
-                  <div class="detail-box">
-                    <div>
-                      <h1>
-                        N I S A S H A R E
-                      </h1>
-                      <p>Login to start reading now!</p>
-                      <a href="login.html">
-                        Login
+                      <a href="/about">
+                        Read More
                       </a>
                     </div>
                   </div>
@@ -114,7 +117,6 @@ const Home = () => {
         </div>
       </div>
     </section>
- 
   </div>
 
 
@@ -124,16 +126,16 @@ const Home = () => {
       <div class="special_container">
         <div class="box b1">
           <div class="img-box">
-            <img src="images/award.png" alt="" />
+            <img src="images/award.png" alt=""/>
           </div>
           <div class="detail-box">
             <h4>
               BEST <br />
               BOOK APPLICATION
             </h4>
-            <a href="about.html">
+            <Link to="/about">
               Read More
-            </a>
+            </Link>
           </div>
         </div>
         <div class="box b2">
@@ -145,9 +147,9 @@ const Home = () => {
               READ <br />
               BOOKS ONLINE
             </h4>
-            <a href="about.html">
+            <Link to="/about">
               Read More
-            </a>
+            </Link>
           </div>
         </div>
         <div class="box b3">
@@ -159,18 +161,18 @@ const Home = () => {
               BEST <br />
               LIBRARY & STORE
             </h4>
-            <a href="about.html">
+            <Link to="/about">
               Read More
-            </a>
+            </Link>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  
 
-  
+
+
   <section class="about_section layout_padding">
     <div class="side_img">
       <img src="images/side-img.png" alt="" />
@@ -196,9 +198,9 @@ const Home = () => {
               <p>
                 NisaShare is a web-based book sharing application that is dedicated to providing books to all Kenyans at affordable prices easily. With NisaShare you can get access to novels, school textbooks, and more all at a tap of a button! You can also interact with your fellow scholars once you log in to the application.
               </p>
-              <a href="about.html">
+              <Link to="/about">
                 Read More
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -206,9 +208,9 @@ const Home = () => {
     </div>
   </section>
 
-  
 
-  
+
+
 
   <section class="course_section layout_padding-bottom">
     <div class="side_img">
@@ -227,9 +229,9 @@ const Home = () => {
         <div class="course_content">
           <div class="box">
             <img src="images/c-1.jpg" alt="" />
-            <a href="" class="">
+            <Link to="/about" >
               <img src="images/link.png" alt="" />
-            </a>
+            </Link>
             <h5>
               Action <br />
               & Adventure
@@ -237,9 +239,9 @@ const Home = () => {
           </div>
           <div class="box">
             <img src="images/c-2.jpg" alt="" />
-            <a href="" class="">
+            <Link to="/about" >
               <img src="images/link.png" alt="" />
-            </a>
+            </Link>
             <h5>
               Detective <br />
               & Mystery
@@ -249,9 +251,9 @@ const Home = () => {
         <div class="course_content">
           <div class="box">
             <img src="images/c-3.jpg" alt="" />
-            <a href="" class="">
+            <Link to="/about">
               <img src="images/link.png" alt="" />
-            </a>
+            </Link>
             <h5>
               Historical <br />
               Fiction
@@ -259,18 +261,18 @@ const Home = () => {
           </div>
           <div class="box">
             <img src="images/c-4.jpg" alt="" />
-            <a href="" class="">
+            <Link to="/about" >
               <img src="images/link.png" alt="" />
-            </a>
+            </Link>
             <h5>
               Fantasy
             </h5>
           </div>
           <div class="box">
             <img src="images/c-5.jpg" alt="" />
-            <a href="" class="">
+            <Link to="/about">
               <img src="images/link.png" alt="" />
-            </a>
+            </Link>
             <h5>
               Classics
             </h5>
@@ -278,16 +280,15 @@ const Home = () => {
         </div>
       </div>
       <div class="btn-box">
-        <a href="books.html">
+        <Link to="/about">
           Read More
-        </a>
+        </Link>
       </div>
     </div>
   </section>
 
-  
 
-  
+
 
   <section class="login_section layout_padding">
     <div class="container">
@@ -301,35 +302,20 @@ const Home = () => {
               Create your free account now and get immediate access to 100s of
               online books
             </p>
-            <a href="register.html">
+            <Link to="/register">
               REGISTER NOW
-            </a>
+            </Link>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="login_form">
-            <h5>
-              Login Now
-            </h5>
-            <form action="">
-              <div>
-                <input type="email" placeholder="Email" />
-              </div>
-              <div>
-                <input type="password" placeholder="Password" />
-              </div>
-              <button type="submit">Login</button>
-            </form>
-          </div>
-        </div>
+        
       </div>
     </div>
   </section>
 
-  
+ 
 
 
-  
+
 
   <section class="client_section layout_padding-bottom">
     <div class="container">
@@ -410,9 +396,9 @@ const Home = () => {
     </div>
   </section>
 
-  
 
-  
+
+
 
   <section class="contact_section ">
     <div class="container">
@@ -424,7 +410,8 @@ const Home = () => {
                 Contact Us
               </h3>
               <p>
-                Send us your feedback today so that we can make your experience with us better!
+                It is a long established fact that a reader will be distracted
+                by the readable
               </p>
             </div>
           </div>
@@ -459,9 +446,9 @@ const Home = () => {
     </div>
   </section>
 
-  
 
-  
+
+
   <section class="info_section layout_padding">
     <div class="container">
       <div class="row">
@@ -472,25 +459,23 @@ const Home = () => {
             </h5>
             <ul class="navbar-nav  ">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <Link class="nav-link" to="/">Home <span class="sr-only">(current)</span></Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html"> About </a>
+                <Link class="nav-link" to="/about"> About </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="books.html"> Books </a>
+                <Link class="nav-link" to="contact.html">Contact Us</Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
+                <Link class="nav-link" to="/login">Login</Link>
               </li>
             </ul>
           </div>
         </div>
         <div class="col-md-3">
           <div class="info_course">
+
           </div>
         </div>
 
@@ -500,9 +485,9 @@ const Home = () => {
               FOR ANY QUERY, PLEASE WRITE TO US
             </h5>
             <div class="info_contact">
-              <a href="https://cutt.ly/5mNGi66" target="_blank">
+              <Link to="https://cutt.ly/5mNGi66" target="_blank">
                 View Park Towers
-              </a>
+              </Link>
               <p>
                 Contact@NisaShare.com
               </p>
@@ -523,16 +508,16 @@ const Home = () => {
     </div>
   </section>
 
-  
 
-  
+
+ 
   <footer class="container-fluid footer_section">
     <p>
       &copy; 2021 All Rights Reserved By NisaShare
     </p>
   
   </footer>
- 
+
 
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
