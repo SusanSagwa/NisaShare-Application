@@ -37,7 +37,7 @@ export default function admin() {
                     <a class="active" href="/"><span class="icon home" aria-hidden="true"></span>My Dashboard</a>
                 </li>
                 <li>
-                    <a class="show-cat-btn" href="##">
+                    <a class="show-cat-btn" href="/Abooks">
                         <span class="icon document" aria-hidden="true"></span>Books
                         <span class="category__btn transparent-btn" title="Open list">
                             <span class="sr-only">Open list</span>

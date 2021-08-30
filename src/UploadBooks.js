@@ -8,6 +8,11 @@ import profileImg from "./profile-placeholder.png"
 import {getBase64URL} from "./ImageFn"
 import eins from "./img/avatar/avatar-illustrated-01.png"
 import zwei from "./img/avatar/avatar-illustrated-02.webp"
+//import { Viewer } from '@react-pdf-viewer/core'; 
+import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout'; 
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+//import { Worker } from '@react-pdf-viewer/core';
 //import drei from "./img/categories/01.webp"
 
 
@@ -23,16 +28,18 @@ export default function UploadBooks ()  {
   });
  const [loading, setLoading] = useState(false);
  const [error, setError] = useState(null);
+ 
 
  const handleFile = async (e) => {
   const base64URL = await getBase64URL(e.target.files[0]);
   setBook({
     ...book,
-    photo: base64URL
+    photo: base64URL,
   });
 };
+
+
  
-  
   const onChange = (e) => {
     setBook({
       ...book,
@@ -67,6 +74,8 @@ export default function UploadBooks ()  {
     setLoading(false);
   }
  
+  
+
    
 
   return (
@@ -282,6 +291,7 @@ export default function UploadBooks ()  {
       <p class="form-label">Date of Publishing</p>
       <input  class="form-input" type="date" value={book.publishDate} onChange={onChange} name="publishDate" id="book-publish-date" />
     </label>
+   
     <button  class="form-btn primary-default-btn transparent-btn" type="submit" disabled={loading}>{loading ? 'Loading' : 'Save'}</button>
     {error && (
         <p className="error">{error}</p>

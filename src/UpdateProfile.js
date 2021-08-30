@@ -1,10 +1,10 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState} from "react"
 import {  Button, Alert } from "react-bootstrap"
 import { useAuth } from "./Auth"
-import { Link, useHistory } from "react-router-dom"
-import app from "./firebase";
+import {Link, useHistory } from "react-router-dom"
+//import app from "./firebase";
 //import "./css/Userpage.scss"
-import firebase from 'firebase/app';
+//import firebase from 'firebase/app';
 import "./css/style.scss"
 import eins from "./img/avatar/avatar-illustrated-01.png"
 import zwei from "./img/avatar/avatar-illustrated-02.webp"
@@ -17,26 +17,9 @@ export default function UpdateProfile() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
-  const [user, setUser] = useState({
-    Fname: '',
-    Sname: '',
-    emailRef: ''
-  });
+  
 
-  useEffect(() =>{
-    const db = firebase.firestore();
-    (async() => {
-   const snapshot = await db.collection('users').where('Fname', '==', {currentUser}).get();
-   snapshot.forEach(doc => {
-    user.push({
-    id: doc.id,
-    ...doc.data(),
-      });
-    });
-    setUser(user);
-     }) ();
-   
-  }, );
+ 
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -85,9 +68,9 @@ export default function UpdateProfile() {
                      <span class="logo-title">{currentUser.email}</span>
                     
                    <div class="box">
-                   <h4>{user.Fname}</h4>
+                   <h4>hello</h4>
                    </div>
-                     <span class="logo-subtitle">{user.Fname}</span>
+                     <span class="logo-subtitle">Hello</span>
                  </div>
  
              </a>

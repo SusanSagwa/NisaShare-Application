@@ -6,6 +6,8 @@ import Login from "./Login";
 import Signup from "./Signup";
 import admin from "./admin.js";
 import about from "./about";
+import Abooks from "./Abooks";
+import Check from "./Check";
 import classic from "./Genre/Classics";
 import action from "./Genre/ActionAdventure";
 import detective from "./Genre/DetectiveMystery";
@@ -37,6 +39,8 @@ const App = () => {
           <Route  path="/signup" component={Signup} />
           <Route  path="/admin" component={admin} />
           <Route  path="/about" component={about}/>
+          <Route  path="/Abooks" component={Abooks}/>
+          <Route path="/Check" component={Check}/>
           <Route path="/forgot-password" component={ForgotPassword}/>
           <PrivateRoute  path="/userpage" component={Userpage} />
           <PrivateRoute  path="/books" component={Books} />

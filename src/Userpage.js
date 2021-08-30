@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from "react-router-dom"
-import app from "./firebase";
+//import { Link } from "react-router-dom"
+//import app from "./firebase";
 import { useAuth } from "./Auth.js";
 import "./css/style.scss"
 import eins from "./img/avatar/avatar-illustrated-01.png"
@@ -21,6 +21,7 @@ export default function Userpage() {
    <aside class="sidebar">
      <div class="sidebar-start">
          <div class="sidebar-head">
+           
              <a href="/" class="logo-wrapper" title="Home">
                  <span class="sr-only">Home</span>
                  <span class="icon logo" aria-hidden="true"></span>
@@ -172,7 +173,7 @@ export default function Userpage() {
                <i data-feather="settings" aria-hidden="true"></i>
                <span>Account settings</span>
              </a></li>
-           <li><a class="danger" href="##">
+           <li><a href="##">
                <i data-feather="log-out" aria-hidden="true"></i>
                <span>Log out</span>
              </a></li>
