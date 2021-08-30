@@ -1,8 +1,14 @@
 import React from 'react'
+import "./custom.scss"
+import "./css/style.scss"
+import a from "./images/a-1b.png"
+import b from "./images/a-2b.png"
+import c from "./images/side-img.png"
 
 export default function about() {
-    return (
-        <body class="sub_page">
+  return (
+    <div>
+     <body class="sub_page">
   <div class="hero_area">
     
     <header class="header_section">
@@ -21,19 +27,16 @@ export default function about() {
           <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
             <ul class="navbar-nav  ml-auto">
               <li class="nav-item ">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="about.html"> About </a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="books.html"> Books </a>
+                <a class="nav-link" href="/books"> Books </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
+                <a class="nav-link" href="/login">Login</a>
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
@@ -43,23 +46,23 @@ export default function about() {
         </nav>
       </div>
     </header>
-    
+   
   </div>
 
   
   <section class="about_section layout_padding">
     <div class="side_img">
-      <img src="images/side-img.png" alt="" />
+      <img src={c} alt="" />
     </div>
     <div class="container">
       <div class="row">
         <div class="col-md-6">
           <div class="img_container">
             <div class="img-box b1">
-              <img src="images/a-1b.png" alt="" />
+              <img src={a} alt="" />
             </div>
             <div class="img-box b2">
-              <img src="images/a-2b.png" alt="" />
+              <img src={b} alt="" />
             </div>
           </div>
         </div>
@@ -70,14 +73,11 @@ export default function about() {
                 About NisaShare
               </h3>
               <p>
-                NisaShare is a web-based book sharing application that is dedicated to providing books to all Kenyans at affordable prices easily. With NisaShare you can get access to novels, school textbooks, and more all at a tap of a button! You can also interact with your fellow scholars once you log in to the application. <br>
-                <br>
+                NisaShare is a web-based book sharing application that is dedicated to providing books to all Kenyans at affordable prices easily. With NisaShare you can get access to novels, school textbooks, and more all at a tap of a button! You can also interact with your fellow scholars once you log in to the application. 
                 NisaShare qualifies to be the best book sharing application in the country because of its ease
-                and efficiency to use. Many users have used our application over the years to access all types of books. <br>
-                <br>
-                You can read books online or you can read offline when you subscribe to the premium plan. Get free access to pdfs, school revision materials, and past exam papers uploaded by other scholars!<br>
-                <br>
-                Find your favourite novels from our huge collection of books in our library! You can recommend them to other readers too!<br>
+                and efficiency to use. Many users have used our application over the years to access all types of books.
+                You can read books online or you can read offline when you subscribe to the premium plan. Get free access to pdfs, school revision materials, and past exam papers uploaded by other 
+                Find your favourite novels from our huge collection of books in our library! You can recommend them to other readers too!
               </p>
             </div>
           </div>
@@ -85,8 +85,6 @@ export default function about() {
       </div>
     </div>
   </section>
-
-  
 
   
   <section class="info_section layout_padding">
@@ -127,7 +125,7 @@ export default function about() {
               FOR ANY QUERY, PLEASE WRITE TO US
             </h5>
             <div class="info_contact">
-              <a href="https://cutt.ly/5mNGi66" target="_blank">
+              <a href="https://cutt.ly/5mNGi66" target="_blank" rel="noreferrer" >
                 View Park Towers
               </a>
               <p>
@@ -149,9 +147,6 @@ export default function about() {
       </div>
     </div>
   </section>
-
- 
-
   
   <footer class="container-fluid footer_section">
     <p>
@@ -161,11 +156,13 @@ export default function about() {
   <footer class="container-fluid footer_section">
 
 </footer>
- 
+  
 
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
 
 </body>
-    )
-}
+
+    </div>
+  )
+};
