@@ -5,8 +5,10 @@ import { Button } from "@material-ui/core";
 import {Alert} from "react-bootstrap";
 import "./custom.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+import firebase from 'firebase/app';
 
 export default function Signup() {
+  const db = firebase.firestore();
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
@@ -14,6 +16,20 @@ export default function Signup() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+  const {uid} = signup
+  const[user, setUser] = useState({
+    Fname: '',
+    Sname: '',
+    emailRef: '',
+    user_id: uid
+  });
+
+  const onChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
+    })
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -32,9 +48,11 @@ export default function Signup() {
     }
 
     setLoading(false)
+    console.log(user);
+    db.collection('users').doc(uid).set(user);
   }
 
-
+  
   return (
     <body class="sub_page">
   <div class="hero_area">
@@ -101,13 +119,13 @@ export default function Signup() {
             {error && <Alert variant="danger">{error}</Alert>}
             <form onSubmit={handleSubmit}>
               <div>
-                <input type="text" placeholder="First Name " />
+                <input type="text" placeholder="First Name "  value={user.Fname} onChange={onChange} name="Fname"/>
               </div>
               <div>
-                <input type="text" placeholder="Last Name " />
+                <input type="text" placeholder="Last Name " value={user.Sname} onChange={onChange} name="Sname" />
               </div>
               <div>
-                <input name="email" type="email" placeholder="Email "  ref={emailRef} required  />
+                <input name="emailRef" type="email" placeholder="Email "  ref={emailRef} value={user.emailRef} onChange={onChange}required  />
               </div>
               <div>
                 <input name="password" type="password" placeholder="Password" ref={passwordRef} required />
@@ -204,4 +222,3 @@ export default function Signup() {
 </body>
   );
 };
-

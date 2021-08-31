@@ -13,10 +13,13 @@ export function AuthProvider({ children }) {
 
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password)
-  }
+  } 
 
   function login(email, password) {
-    return auth.signInWithEmailAndPassword(email, password)
+   
+      return auth.signInWithEmailAndPassword(email, password)
+   
+   
   }
 
   function logout() {
@@ -35,6 +38,15 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password)
   }
 
+  function setIsAdminFunction(isAdmin){
+    return currentUser.updateProfile({
+        providerData : {
+            isAdmin: isAdmin
+        } 
+        
+    })
+    // return currentUser.providerData[0].isAdmin = isAdmin
+}
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user)

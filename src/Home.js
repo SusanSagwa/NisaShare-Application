@@ -2,11 +2,30 @@ import React from "react";
 import { useAuth } from "./Auth.js";
 import app from "./firebase";
 import { Link } from 'react-router-dom';
-import "./custom.scss"
+import "./css/style.scss"
+//import firebase from 'firebase/app';
+import award from "./images/award.png"
+import study from "./images/study.png"
+import stack from "./images/books-stack-of-three.png"
+import side from "./images/side-img.png"
+import a from "./images/a-1b.png"
+import b from "./images/a-2b.png"
+import c from "./images/side-img.png"
+import d from "./images/c-1.jpg"
+import e from "./images/link.png"
+import f from "./images/c-2.jpg"
+import g from "./images/link.png"
+import h from "./images/c-3.jpg"
+import i from "./images/c-4.jpg"
+import j from "./images/c-5.jpg"
+import k from "./images/client4.gif"
+import l from "./images/client5.gif"
+import m from "./images/client3.gif"
 
 
 
 const Home = () => {
+  
   const { currentUser } = useAuth()
   return (
     <body>
@@ -35,6 +54,9 @@ const Home = () => {
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/books">Books</a>
               </li>
               <li class="nav-item">
                 <Link class="nav-link" to="/userpage">{currentUser.email}</Link>
@@ -126,7 +148,7 @@ const Home = () => {
       <div class="special_container">
         <div class="box b1">
           <div class="img-box">
-            <img src="images/award.png" alt=""/>
+            <img src={award} alt=""/>
           </div>
           <div class="detail-box">
             <h4>
@@ -140,7 +162,7 @@ const Home = () => {
         </div>
         <div class="box b2">
           <div class="img-box">
-            <img src="images/study.png" alt="" />
+            <img src= {study} alt="" />
           </div>
           <div class="detail-box">
             <h4>
@@ -154,7 +176,7 @@ const Home = () => {
         </div>
         <div class="box b3">
           <div class="img-box">
-            <img src="images/books-stack-of-three.png" alt="" />
+            <img src={stack} alt="" />
           </div>
           <div class="detail-box">
             <h4>
@@ -175,17 +197,17 @@ const Home = () => {
 
   <section class="about_section layout_padding">
     <div class="side_img">
-      <img src="images/side-img.png" alt="" />
+      <img src={side} alt="" />
     </div>
     <div class="container">
       <div class="row">
         <div class="col-md-6">
           <div class="img_container">
             <div class="img-box b1">
-              <img src="images/a-1b.png" alt="" />
+              <img src={a} alt="" />
             </div>
             <div class="img-box b2">
-              <img src="images/a-2b.png" alt="" />
+              <img src={b} alt="" />
             </div>
           </div>
         </div>
@@ -214,7 +236,7 @@ const Home = () => {
 
   <section class="course_section layout_padding-bottom">
     <div class="side_img">
-      <img src="images/side-img.png" alt="" />
+      <img src={c} alt="" />
     </div>
     <div class="container">
       <div class="heading_container">
@@ -228,9 +250,9 @@ const Home = () => {
       <div class="course_container">
         <div class="course_content">
           <div class="box">
-            <img src="images/c-1.jpg" alt="" />
+            <img src={d} alt="" />
             <Link to="/about" >
-              <img src="images/link.png" alt="" />
+              <img src={e} alt="" />
             </Link>
             <h5>
               Action <br />
@@ -238,9 +260,9 @@ const Home = () => {
             </h5>
           </div>
           <div class="box">
-            <img src="images/c-2.jpg" alt="" />
+            <img src={f} alt="" />
             <Link to="/about" >
-              <img src="images/link.png" alt="" />
+              <img src={g} alt="" />
             </Link>
             <h5>
               Detective <br />
@@ -250,9 +272,9 @@ const Home = () => {
         </div>
         <div class="course_content">
           <div class="box">
-            <img src="images/c-3.jpg" alt="" />
+            <img src={h} alt="" />
             <Link to="/about">
-              <img src="images/link.png" alt="" />
+              <img src={g} alt="" />
             </Link>
             <h5>
               Historical <br />
@@ -260,18 +282,18 @@ const Home = () => {
             </h5>
           </div>
           <div class="box">
-            <img src="images/c-4.jpg" alt="" />
+            <img src={i} alt="" />
             <Link to="/about" >
-              <img src="images/link.png" alt="" />
+              <img src={g} alt="" />
             </Link>
             <h5>
               Fantasy
             </h5>
           </div>
           <div class="box">
-            <img src="images/c-5.jpg" alt="" />
+            <img src={j} alt="" />
             <Link to="/about">
-              <img src="images/link.png" alt="" />
+              <img src={g} alt="" />
             </Link>
             <h5>
               Classics
@@ -332,7 +354,7 @@ const Home = () => {
           <div class="carousel-item active">
             <div class="box">
               <div class="img-box">
-                <img src="images/client4.gif" alt="" />
+                <img src={k} alt="" />
               </div>
               <div class="detail-box">
                 <h5>
@@ -350,7 +372,7 @@ const Home = () => {
           <div class="carousel-item">
             <div class="box">
               <div class="img-box">
-                <img src="images/client5.gif" alt="" />
+                <img src={l} alt="" />
               </div>
               <div class="detail-box">
                 <h5>
@@ -368,7 +390,7 @@ const Home = () => {
           <div class="carousel-item">
             <div class="box">
               <div class="img-box">
-                <img src="images/client3.gif" alt="" />
+                <img src={m} alt="" />
               </div>
               <div class="detail-box">
                 <h5>
