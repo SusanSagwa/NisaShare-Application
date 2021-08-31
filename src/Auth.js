@@ -38,6 +38,15 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password)
   }
 
+  function setIsAdminFunction(isAdmin){
+    return currentUser.updateProfile({
+        providerData : {
+            isAdmin: isAdmin
+        } 
+        
+    })
+    // return currentUser.providerData[0].isAdmin = isAdmin
+}
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user)

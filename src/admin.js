@@ -132,7 +132,7 @@ export default function admin() {
                     </ul>
                 </li> 
                 <li>
-                    <a class="show-cat-btn" href="##">
+                    <a class="show-cat-btn" href="/Users">
                         <span class="icon user-3" aria-hidden="true"></span>Users
                         <span class="category__btn transparent-btn" title="Open list">
                             <span class="sr-only">Open list</span>

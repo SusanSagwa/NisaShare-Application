@@ -6,20 +6,20 @@ import eins from "./img/avatar/avatar-illustrated-01.png"
 import zwei from "./img/avatar/avatar-illustrated-02.webp"
 //import drei from "./img/categories/01.webp"
 
-export default function Abooks() {
-    const [books, setBooks] = useState([]);
+export default function Users() {
+    const [user, setUser] = useState([]);
     useEffect(() =>{
       const db = firebase.firestore();
       (async() => {
-     const snapshot = await db.collection('books').get();
-     const booksArray = [];
+     const snapshot = await db.collection('users').get();
+     const usersArray = [];
      snapshot.forEach(doc => {
-     booksArray.push({
+     usersArray.push({
      id: doc.id,
      ...doc.data(),
        });
      });
-     setBooks(booksArray);
+     setUser(usersArray);
       }) ();
     }, []);
     
@@ -151,7 +151,7 @@ export default function Abooks() {
                     </ul>
                 </li> 
                 <li>
-                    <a class="show-cat-btn" href="/Users">
+                    <a class="show-cat-btn" href="##">
                         <span class="icon user-3" aria-hidden="true"></span>Users
                         <span class="category__btn transparent-btn" title="Open list">
                             <span class="sr-only">Open list</span>
@@ -308,25 +308,23 @@ export default function Abooks() {
                   </tr>
                 </thead>
                 <tbody>
-                {books.map(book =>
+                {user.map(user =>
                   <tr>
                     <td>
                       <label class="users-table__checkbox">
                         <input type="checkbox" class="check"/>
                         <div class="categories-table-img">
-                          <picture><source srcset={book.photo} type="image/webp"/><img src="./img/categories/01.jpg" alt="category"/></picture>
+                          <picture><source srcset={user.photo} type="image/webp"/><img src="./img/categories/01.jpg" alt="category"/></picture>
                         </div>
                       </label>
                     </td>
                     <td><strong>
-                     {book.title}
+                     {user.Fname}
                      </strong>
                     </td>
-                    <td><span>{book.category}</span></td>
-                    <td>{book.points}</td>
-                    <td><span class="badge-active">Edit</span></td>
-                    <td><span class="badge-pending">Delete</span></td>
-                    
+                    <td><span>{user.Sname}</span></td>
+                    <td>{user.emailRef}</td>
+                   
                   </tr>)}
                   
                 </tbody>

@@ -20,6 +20,8 @@ import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
 import Books from "./Books";
 import UploadBooks from "./UploadBooks";
+import MyRepo from "./MyRepo";
+import Users from "./Users";
 
 
 
@@ -41,6 +43,8 @@ const App = () => {
           <Route  path="/about" component={about}/>
           <Route  path="/Abooks" component={Abooks}/>
           <Route path="/Check" component={Check}/>
+          <Route path="MyRepo" component={MyRepo}/>
+          <Route path= "Users" component={Users}/>
           <Route path="/forgot-password" component={ForgotPassword}/>
           <PrivateRoute  path="/userpage" component={Userpage} />
           <PrivateRoute  path="/books" component={Books} />

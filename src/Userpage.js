@@ -54,7 +54,7 @@ export default function Userpage() {
                      </ul>
                  </li>
                  <li>
-                     <a class="show-cat-btn" href="##">
+                     <a class="show-cat-btn" href="/MyRepo">
                          <span class="icon folder" aria-hidden="true"></span>My Repo
                      </a> 
                  </li>
